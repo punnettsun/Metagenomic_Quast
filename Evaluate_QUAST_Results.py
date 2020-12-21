@@ -1,6 +1,6 @@
 # Program: Evaluate_QUAST_Results
 # Author: Punit Sundar
-# Last Updated: July 14, 2020
+# Last Updated: December 21, 2020
 # Description: Gut sample reads and Australian coral sample reads were assembled using SPAdes and MetaSPAdes 
 #              after trimming. QUAST results were generated for kmer sizes 21, 33 and 55 for both SPAdes and 
 #              MetaSPAdes. Program compiles all 6 TSV files (3 from SPAdes & 3 from MetaSPAdes for GUT or CORAL 
@@ -10,12 +10,12 @@
 
 # Suggested input when running program:
 # First input: CORAL
-# Second input: *Provide full path to CORAL & GUT data folders* EX: /Users/punitsundar/Documents/Metagenomic_Data
+# Second input: *Provide full path to CORAL & GUT data folders* EX: /Users/punitsundar/Documents/Metagenomic_Quast/Metagenomic_Data
 # Third input: 0
 # *Check CORAL or GUT folder to examine generated CSV file*
 
 
-# Error FIX
+# Bug FIX
 # 1. Make sure all metrics match for QUAST results
 
 import os
@@ -119,11 +119,10 @@ class AnalyzeQUASTMetrics(object):
                     df.plot(x = 'Tool/kmer', y = metric_choice, kind = 'bar')
                     plt.show()
                         
-   
-            
-   
-try1 = AnalyzeQUASTMetrics()
-try1.create_CSV()
-try1.compare_single_metric('CORAL') # Should change to 'GUT' if assessing GUT results 
 
+
+if __name__=="__main__":
+    try1 = AnalyzeQUASTMetrics()
+    try1.create_CSV()
+    try1.compare_single_metric('CORAL') # Should change to 'GUT' if assessing GUT results 
 
